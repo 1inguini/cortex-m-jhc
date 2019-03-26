@@ -123,52 +123,6 @@ hsMainC pwd = do
     input = hsFiles pwd
 
 
-
--- jhcRtsObjects :: FilePath -> IO [FilePath]
--- jhcRtsObjects pwd = do
---   putStr "jhcRtsObjects was called\n"
---   generatedBins <- hsMainC pwd
---   cFiles        <- readProcess
---                    "fish" ["-c","ls " ++ jhcrts pwd ++ "/**.c"] []
---   mapM_ (callCommand . (\input ->
---                           cc +++ cflags pwd +++ "-c -o" +++ (init . init) input ++ ".o" +++ input))
---     $ words cFiles
---   putStr "jhcRtsObjects done\n"
---   return
---     (generatedBins ++
---       map (\input ->
---               (init . init) input ++ ".o") (words cFiles))
---     -- $ generatedBins ++
---     -- map (\input -> pwd ++ "/" ++ (init . init) input ++ ".o")
---     -- (words cFiles)
---     -- where
---     --   cFiles = listToString " "
---     --            (map (\x -> jhcrts pwd ++ "/rts/" ++ x)
---     --             (words "gc_jgc.c jhc_rts.c stableptr.c rts_support.c conc_custom.c"))
-
--- libjhcrtsA :: FilePath -> IO [FilePath]
--- libjhcrtsA pwd = do
---   putStr "libjhcrtsA was called\n"
---   generatedBins <- hsMainC pwd
---   objs          <- jhcRtsObjects pwd
-
---   source <- readFile header
---   removeFile header
---   writeFile
---     header
---     (gsub "void _amain(void);\nvoid jhc_hs_init(void);" "\n// remove\n"
---       source)
---   -- objs <- readProcess "fish" ["-c","ls" +++ jhcrts pwd ++ "/**.o"] []
---   putStr $ listToString " " objs ++ "\n"
---   callCommand
---     $ ar +++ "-r" +++ out +++ listToString " " objs
---   putStr "libjhcrtsA done\n"
---   return $ out:generatedBins
---   where
---     header = jhcrts pwd ++ "/jhc_rts_header.h"
---     out    = projsrc pwd ++ "/libjhcrts.a"
-
-
 ldScript :: FilePath -> IO [FilePath]
 ldScript pwd = do
   putStr "ldScript was called\n"
