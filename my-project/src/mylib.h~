@@ -1,0 +1,10 @@
+#ifndef MYLIB_H  //二重でincludeされることを防ぐ
+#define MYLIB_H
+
+void gpio_setup(void);
+
+// call this
+void led_toggle(void);
+void wait(void);
+
+#endif
