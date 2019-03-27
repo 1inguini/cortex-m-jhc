@@ -123,6 +123,16 @@ hsMainC pwd = do
     input = hsFiles pwd
 
 
+-- preProc pwd = do
+--   cflags <- cflags pwd
+--   options <- options pwd
+--   callCommand
+--     (cc +++ input +++ options +++ cflags +++ "-I" ++ projsrc pwd ++ "/src -E >" +++ "/tmp/preproc.c")
+--   removeFile input
+--   copyFile "/tmp/preproc.c" input
+--   where
+--     input = projsrc pwd ++ "/hs_main.c"
+
 ldScript :: FilePath -> IO [FilePath]
 ldScript pwd = do
   putStr "ldScript was called\n"
@@ -150,19 +160,6 @@ options pwd = do
     . init . init
     . takeWhile (/= '\n')
     <$> readFile hsMain
-
-  -- drop 32 firstLine
-
--- removeImportStd pwd = do
---   files <- words <$> readProcess "find" [jhcrts pwd , "-name", "*.c"] []
---   mapM_ (\file -> do
---             source <- readFile file
---             removeFile file
---             writeFile file
---               (gsub "#include <stdio.h>" "// removed #include <stdio.h>"
---                source))
---     files
-
 
 
 cToO :: FilePath -> IO [FilePath]
@@ -245,6 +242,7 @@ main = do
   -- _             <- hsMainC pwd
   -- generatedBins <- proj pwd
   -- print =<< options pwd
+  -- preProc pwd
   link pwd
 
   -- clean generatedBins

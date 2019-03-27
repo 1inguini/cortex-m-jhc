@@ -3,38 +3,27 @@ module Main where
 import           Data.Word
 
 foreign import ccall "mylib.h gpio_setup" gpio_setup :: IO ()
-foreign import ccall "mylib.h led_toggle" led_toggle :: IO ()
 foreign import ccall "mylib.h wait" wait :: Word -> IO ()
-foreign import ccall "mylib.h led_on" led_on :: IO ()
-foreign import ccall "mylib.h led_off" led_off :: IO ()
+foreign import ccall "mylib.h gpioB" c_GPIOB :: IO Word32
+foreign import ccall "mylib.h gpio12" c_GPIO12 :: IO Word16
+foreign import ccall "libopencm3/stm32/gpio.h gpio_set" c_gpio_set :: Word32 -> Word16 -> IO ()
+foreign import ccall "libopencm3/stm32/gpio.h gpio_clear" c_gpio_clear :: Word32 -> Word16 -> IO ()
 
+type Port = Word32
+type Pin = Word16
 
--- foreign import ccall "mylib.h gpio_set" c_gpio_set :: Int -> Int -> IO ()
--- foreign import ccall "mylib.h gpio_clear" c_gpio_clear :: Int -> Int -> IO ()
--- foreign import ccall "mylib.h gpioB" c_GPIOB :: IO Int
--- foreign import ccall "mylib.h gpio12" c_GPIO12:: IO Int
-
-
-
-loop :: IO()
-loop = do
-  -- gpiob <- c_GPIOB
-  -- gpio12 <- c_GPIO12
-  -- wait
-  -- led_toggle
-  -- wait
-  -- led_toggle
+blink :: Port -> Pin ->IO()
+blink port pin = do
   wait 100000
-  led_on
-  -- c_gpio_clear gpiob gpio12
+  c_gpio_clear port pin
   wait 100000
-  led_off
+  c_gpio_set port pin
 
-  loop
+  blink port pin
 
 main :: IO ()
 main = do
+  gpioB <- c_GPIOB
+  gpio12 <- c_GPIO12
   gpio_setup
-  loop
-  -- led_off
-  -- led_on
+  blink gpioB gpio12

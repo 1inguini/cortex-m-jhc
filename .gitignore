@@ -1,0 +1,5 @@
+*.o
+
+/my-project/hs_main.c
+
+*.ld
