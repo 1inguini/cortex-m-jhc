@@ -13,6 +13,9 @@
 
 void main() { _amain(); }
 
+int gpioB = GPIOB;
+int gpio12 = GPIO12;
+
 void gpio_setup(void) {
     /* Enable GPIOA clock. */
     /* Manually: */
@@ -50,9 +53,9 @@ void led_off() {
     // gpio_set(GPIOB, GPIO5);
 }
 
-void wait() {
+void wait(uint milisec) {
     int i;
-    for (i = 0; i < 100000; i++) { /* Wait a bit. */
+    for (i = 0; i < milisec; i++) { /* Wait a bit. */
         __asm__("nop");
     }
 }
