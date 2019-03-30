@@ -6,7 +6,11 @@ typedef unsigned short uint16;
 
 void main(void);
 
+uint32 gpioA(void);
 uint32 gpioB(void);
+uint32 gpioC(void);
+uint32 gpioD(void);
+
 uint16 gpio12(void);
 
 // call this

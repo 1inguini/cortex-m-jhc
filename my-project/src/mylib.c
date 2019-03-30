@@ -13,7 +13,11 @@
 
 void main() { _amain(); }
 
+uint32 gpioA() { return GPIOA; }
 uint32 gpioB() { return GPIOB; }
+uint32 gpioC() { return GPIOC; }
+uint32 gpioD() { return GPIOD; }
+
 uint16 gpio12() { return GPIO12; }
 
 void gpio_setup(void) {
@@ -33,24 +37,6 @@ void gpio_setup(void) {
     // gpio_mode_setup(GPIOB, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO5);
     gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL,
                   GPIO12);
-}
-
-// call this
-void led_toggle() {
-    gpio_toggle(GPIOB, GPIO12);
-    // gpio_toggle(GPIOB, GPIO5);
-    // gpio_toggle(GPIOA, GPIO5); /* LED on */
-}
-
-void led_on() {
-    gpio_clear(GPIOB, GPIO12);
-    // gpio_clear(GPIOA, GPIO5);
-    // gpio_clear(GPIOB, GPIO5);
-}
-void led_off() {
-    gpio_set(GPIOB, GPIO12);
-    // gpio_set(GPIOA, GPIO5);
-    // gpio_set(GPIOB, GPIO5);
 }
 
 void wait(uint32 milisec) {
