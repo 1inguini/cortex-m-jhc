@@ -2,9 +2,11 @@
 
 *.o
 
+*.ld
+
 /my-project/hs_main.c
 
-*.ld
+/my^project/jhc_custom/*
 
 **.*~
 
