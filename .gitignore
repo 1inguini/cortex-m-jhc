@@ -3,8 +3,15 @@
 *.o
 
 *.ld
+/a.out
 
-/Ccall.hs
+*.o
+
+*.ld
+
+/Lib/*
+
+/jhc_custom/*
 
 **.*~
 

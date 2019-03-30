@@ -1,12 +1,12 @@
 module Main where
 
-import           Ccall as C
+import           Lib.Ccall as C
 
 blink :: Port -> Pin -> IO ()
 blink port pin = do
-  wait 200000
+  wait 100000
   C.gpio_clear port pin
-  wait 200000
+  wait 100000
   C.gpio_set port pin
 
   blink port pin
