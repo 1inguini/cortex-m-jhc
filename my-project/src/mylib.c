@@ -17,8 +17,27 @@ uint32 gpioA() { return GPIOA; }
 uint32 gpioB() { return GPIOB; }
 uint32 gpioC() { return GPIOC; }
 uint32 gpioD() { return GPIOD; }
+uint32 gpioE() { return GPIOE; }
+uint32 gpioF() { return GPIOF; }
+uint32 gpioG() { return GPIOG; }
 
+uint16 gpio0() { return GPIO0; }
+uint16 gpio1() { return GPIO1; }
+uint16 gpio2() { return GPIO2; }
+uint16 gpio3() { return GPIO3; }
+uint16 gpio4() { return GPIO4; }
+uint16 gpio5() { return GPIO5; }
+uint16 gpio6() { return GPIO6; }
+uint16 gpio7() { return GPIO7; }
+uint16 gpio8() { return GPIO8; }
+uint16 gpio9() { return GPIO9; }
+uint16 gpio10() { return GPIO10; }
+uint16 gpio11() { return GPIO11; }
 uint16 gpio12() { return GPIO12; }
+uint16 gpio13() { return GPIO13; }
+uint16 gpio14() { return GPIO14; }
+uint16 gpio15() { return GPIO15; }
+uint16 gpio_all() { return GPIO_ALL; }
 
 void gpio_setup(void) {
     /* Enable GPIOA clock. */
