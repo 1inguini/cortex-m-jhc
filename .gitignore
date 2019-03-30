@@ -8,6 +8,10 @@
 
 /my-project/jhc_custom/*
 
+/my-project/hs_src/*
+
 **.*~
 
 **\#
+
+.\#*

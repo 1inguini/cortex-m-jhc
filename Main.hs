@@ -4,9 +4,9 @@ import           Ccall as C
 
 blink :: Port -> Pin -> IO ()
 blink port pin = do
-  wait 100000
+  wait 200000
   C.gpio_clear port pin
-  wait 100000
+  wait 200000
   C.gpio_set port pin
 
   blink port pin

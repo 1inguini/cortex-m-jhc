@@ -1,9 +1,9 @@
 # jhc-blackpill
-led blink for stm32f103 blackpill(and other cortex-m supported by libopencm3) using haskell(jhc)
+led blink example for stm32f103 blackpill using haskell(jhc)
 
 ## Dependence
-- stack
-- jhc (I used https://github.com/csabahruska/jhc-components instead of original jhc)
+
+- jhc-libopencm3-template(https://github.com/1inguini/jhc-libopencm3-template)
 
 ## Build
-build with `stack ./Build.hs`
+`git add submodule https://github.com/1inguini/jhc-libopencm3-template.git my-project/hs_src` at root directory of jhc-libopencm3-template and build with `stack ./Build.hs` there
